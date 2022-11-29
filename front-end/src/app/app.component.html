@@ -1,0 +1,45 @@
+<mat-toolbar color="primary" >
+  <h2>Brands :&nbsp;</h2><button mat-button [matMenuTriggerFor]="menu" style="background-color:white;border: 0;"><span style="font-size: 18px;">&nbsp;&nbsp;<span style="color: black;">{{disp}}</span>&nbsp;&nbsp;</span></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="menufun();allb=true;disp=all">All Brands</button>
+    <button mat-menu-item (click)="menufun();appleb=true;disp=apple">Apple</button>
+    <button mat-menu-item (click)="menufun();realmeb=true;disp=realme">Realme</button>
+    <button mat-menu-item (click)="menufun();samsungb=true;disp=samsung">Samsung</button>
+    <button mat-menu-item (click)="menufun();redmib=true;disp=redmi">Redmi</button>
+    <button mat-menu-item (click)="menufun();oneplusb=true;disp=oneplus">One Plus</button>
+  </mat-menu>
+  <span style="position: absolute;top: 15px;right: 605px;font-size: 35px;font-family: sans-serif;">Mobile Store</span>
+  <span>
+    <mat-slide-toggle color="accent" style="position: absolute;top: 18px;left: 220px;" [(ngModel)]="toggle">Flagship's</mat-slide-toggle>
+  </span>
+  <span style="position: absolute;top: 15px;right: 120px;">Price :&nbsp;<input style="height: 25px;" type="number" [(ngModel)]="priceInput" min="0" placeholder="Enter the Price"></span>
+  <span class="example-button-row" style="position: absolute;top: 15px;right: 20px;">
+    <button mat-raised-button color="accent" (click)="mainfun();">Search</button>
+  </span>  
+</mat-toolbar>
+  <table>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>
+          <img [src]="appleimg" *ngIf="item.company==='Apple'" style="height: 350px;width: 300px;padding: 10px;" >
+          <img [src]="realmeimg" *ngIf="item.company==='Realme'" style="height: 350px;width: 350px;padding: 10px;">
+          <img [src]="redmiimg" *ngIf="item.company==='Redmi'" style="height: 350px;width: 350px;padding: 10px;" >
+          <img [src]="samsungimg" *ngIf="item.company==='Samsung'" style="height: 370px;width: 410px;" >
+          <img [src]="oneplusimg" *ngIf="item.company==='One Plus'" style="height: 350px;width: 350px;padding: 10px;" >
+          <span>
+            <img [src]="flagship" *ngIf="item.flagshipphone==true" style="position: absolute;left: 1250px;height: 50px;width: 50px;" >
+          </span>
+          <span style="position: absolute;left: 500px;font-size: 25px;">
+            <br>
+            Brand Name :&nbsp;<b>{{item.company}}</b><br><br>
+            Model Name :&nbsp;<b>{{item.modelname}}</b><br><br>
+            Price : <b>{{item.price}}-/RS</b><br><br>
+            Warranty : <b>{{item.warranty}} Years</b>
+          </span>
+          <hr style="width: 280%;">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+   
